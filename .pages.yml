@@ -1,0 +1,44 @@
+media:
+  input: media
+  output: /media
+
+content:
+  - name: actualites
+    label: Actualités
+    type: file
+    path: news.json
+    format: json
+    fields:
+      - name: posts
+        label: Publications
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: Titre
+            type: string
+            required: true
+          - name: date
+            label: Date de publication
+            type: date
+            required: true
+          - name: summary
+            label: Résumé
+            type: text
+            required: true
+          - name: content
+            label: Texte complet
+            type: text
+          - name: image
+            label: Photo
+            type: image
+          - name: image_alt
+            label: Description de la photo
+            type: string
+
+settings:
+  content:
+    merge: true
