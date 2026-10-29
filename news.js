@@ -2,7 +2,7 @@
   const container = document.getElementById('news-list');
   if (!container) return;
 
-  fetch('news.json', { cache: 'no-store' })
+  fetch('./news.json', { cache: 'no-store' })
     .then(response => {
       if (!response.ok) throw new Error('Impossible de charger les actualités');
       return response.json();
@@ -19,9 +19,13 @@
         if (post.image) {
           const image = document.createElement('img');
           image.className = 'news-image';
-          image.src = post.image;
+          image.src = post.image.startsWith('http') ? post.image : new URL(post.image.replace(/^\/+/, ''), document.baseURI).href;
           image.alt = post.image_alt || post.title || 'Actualité SEMAD SARL';
           image.loading = 'lazy';
+          image.onerror = () => {
+            image.onerror = null;
+            image.src = new URL('/semad-sarl/logo-semad.png', window.location.origin).href;
+          };
           article.appendChild(image);
         }
 
@@ -46,6 +50,6 @@
       });
     })
     .catch(() => {
-      // La page reste lisible même si les actualités ne peuvent pas être chargées.
+      // Garder le contenu de secours si le fichier d'actualités est indisponible.
     });
 })();
