@@ -1,0 +1,17 @@
+SEMAD SARL — site vitrine de démarrage
+
+Fichiers :
+- index.html : contenu du site
+- styles.css : mise en page responsive bleu/or/blanc
+- script.js : menu mobile et formulaire de demande de devis
+- assets/logo-semad.png : logo fourni pour SEMAD SARL
+
+IMPORTANT AVANT PUBLICATION
+1. Remplacer CONTACT_EMAIL dans script.js par l'adresse e-mail réellement créée et testée.
+2. Ajouter le numéro officiel de téléphone/WhatsApp dans index.html, puis créer le lien WhatsApp si souhaité.
+3. Vérifier le nom légal exact, les coordonnées et les prestations réellement disponibles.
+4. Le formulaire actuel prépare un brouillon d'e-mail sur l'appareil du visiteur ; il n'envoie pas les données à un serveur. Une adresse e-mail doit être configurée.
+5. Ne pas présenter les services de sécurité privée/gardiennage comme disponibles avant obtention des autorisations requises.
+6. Le site n'est pas encore publié sur Internet et aucun domaine n'a été acheté par ce projet.
+
+Publication gratuite possible : GitHub Pages ou un hébergeur statique gratuit. Le sous-domaine de l'hébergeur sera gratuit ; semadsarl.com nécessitera l'achat d'un domaine et la configuration DNS.
