@@ -1,6 +1,6 @@
 // Avant publication : remplacez la valeur ci-dessous par l'adresse e-mail officielle de SEMAD SARL.
 // Exemple après création : const CONTACT_EMAIL = 'contact@semadsarl.com';
-const CONTACT_EMAIL = '';
+const CONTACT_EMAIL = 'semad.developpementsarl@gmail.com';
 const menuButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav');
 menuButton.addEventListener('click', () => {
