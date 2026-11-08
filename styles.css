@@ -26,3 +26,15 @@
 .navigation a {
   white-space: nowrap;
 }
+
+/* Correction du menu SEMAD SARL */
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navigation a {
+  display: inline-block;
+  white-space: nowrap;
+}
