@@ -8,9 +8,34 @@ menuButton.addEventListener('click', () => {
   menuButton.setAttribute('aria-expanded', String(open));
   menuButton.textContent = open ? '✕' : '☰';
 });
-nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-  nav.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false'); menuButton.textContent = '☰';
+// Menus déroulants : un seul groupe ouvert à la fois
+const dropdownButtons = [...document.querySelectorAll('.nav-dropdown-toggle')];
+function closeDropdowns() {
+  dropdownButtons.forEach(button => {
+    button.setAttribute('aria-expanded', 'false');
+    document.getElementById(button.getAttribute('aria-controls')).hidden = true;
+  });
+}
+dropdownButtons.forEach(button => button.addEventListener('click', () => {
+  const shouldOpen = button.getAttribute('aria-expanded') !== 'true';
+  closeDropdowns();
+  if (shouldOpen) {
+    button.setAttribute('aria-expanded', 'true');
+    document.getElementById(button.getAttribute('aria-controls')).hidden = false;
+  }
 }));
+nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+  closeDropdowns();
+  nav.classList.remove('open');
+  menuButton.setAttribute('aria-expanded', 'false');
+  menuButton.textContent = '☰';
+}));
+document.addEventListener('click', event => {
+  if (!event.target.closest('.nav-group')) closeDropdowns();
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') closeDropdowns();
+});
 document.getElementById('year').textContent = new Date().getFullYear();
 
 document.getElementById('quote-form').addEventListener('submit', async event => {
