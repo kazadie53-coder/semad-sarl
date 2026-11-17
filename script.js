@@ -151,8 +151,11 @@ showView();
 // Diaporama institutionnel de la page d'accueil
 const semadSlides = [
   {eyebrow:'Bienvenue • SEMAD SARL • Kolwezi',title:"Construire aujourd'hui <span>les opportunités de demain.</span>",description:"Une ambition congolaise fondée sur la confiance, l'excellence et le développement, au service des projets et des communautés.",label:'Découvrir notre société',href:'#apropos'},
-  {eyebrow:'Nos domaines d’activité',title:'Des idées concrètes pour <span>un développement responsable.</span>',description:"Commerce, agriculture et élevage, services aux entreprises, formation professionnelle et projet de sécurité et gardiennage : cinq axes à découvrir.",label:'Explorer nos domaines',href:'#services'},
-  {eyebrow:'Notre vision • 2030',title:'Grandir ensemble, <span>avancer durablement.</span>',description:"Notre feuille de route : structurer nos projets, développer les compétences et rechercher des collaborations solides à Kolwezi et au-delà.",label:'Découvrir Vision 2030',href:'vision-2030.html'}
+  {eyebrow:'Formation professionnelle • Informatique',title:'Développer les compétences <span>numériques de demain.</span>',description:"Notre projet de formation en informatique vise l'apprentissage pratique, l'autonomie et l'employabilité des jeunes et des adultes.",label:'Découvrir la formation',href:'#services'},
+  {eyebrow:'Formation professionnelle • Coupe et couture',title:'Apprendre un métier, <span>créer des opportunités.</span>',description:"SEMAD SARL envisage des ateliers pratiques de coupe et couture pour encourager les savoir-faire et l'entrepreneuriat.",label:'Découvrir la formation',href:'#services'},
+  {eyebrow:'Agriculture & élevage • Aviculture',title:'Préparer un élevage <span>avicole responsable.</span>',description:"Un projet progressif d'élevage de poussins femelles destinés à devenir des poules pondeuses, avec une attention portée à l'hygiène et au suivi technique.",label:"Découvrir l'aviculture",href:'#services'},
+  {eyebrow:'Agriculture • Culture du maïs',title:'Cultiver la terre, <span>préparer l'avenir.</span>',description:"Nos projets agricoles envisagent notamment la culture du maïs pour contribuer à la production alimentaire et à l'économie locale.",label:'Découvrir nos projets agricoles',href:'#services'},
+  {eyebrow:'Commerce • Équipements de protection',title:'Des équipements adaptés <span>aux exigences du terrain.</span>',description:"SEMAD SARL envisage le commerce et la fourniture d'équipements de protection individuelle : casques, gilets, chaussures de sécurité et accessoires.",label:'Découvrir le commerce',href:'#services'}
 ];
 let semadSlideIndex = 0;
 const semadDots = document.getElementById('slide-dots');
