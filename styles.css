@@ -119,3 +119,28 @@ main>.section:not([hidden]){min-height:65vh}
 .home-project-grid article:nth-child(1){background-image:linear-gradient(#f4f7fbe8,#f4f7fbf2),url("https://images.unsplash.com/photo-1567547921486-f280c2f53b5d?auto=format&fit=crop&w=700&q=70");background-size:cover}
 .home-project-grid article:nth-child(2){background-image:linear-gradient(#f4f7fbe8,#f4f7fbf2),url("https://images.unsplash.com/photo-1575015826404-cbe87877467f?auto=format&fit=crop&w=700&q=70");background-size:cover}
 .home-project-grid article:nth-child(3){background-image:linear-gradient(#f4f7fbe8,#f4f7fbf2),url("https://images.unsplash.com/photo-1746395592054-dc3aed101f72?auto=format&fit=crop&w=700&q=70");background-size:cover}
+
+/* Correctif affichage mobile et tablettes — photographies prioritaires */
+.semad-hero[data-slide="0"]{background-image:linear-gradient(90deg,#071d3de8 0%,#103963bb 58%,#123f6c70 100%),url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=82")}
+.semad-hero{background-repeat:no-repeat;background-size:cover;background-position:center center}
+.semad-hero .hero-content{max-width:780px}
+.semad-hero .slide-controls{position:relative;z-index:5}
+.semad-hero .slide-dots{min-height:18px}
+.semad-hero .slide-dots button{flex:0 0 auto}
+@media(max-width:1150px){
+  .semad-hero{display:flex!important;flex-direction:column;align-items:stretch;justify-content:center;min-height:650px;gap:0;padding:65px clamp(24px,7vw,80px) 60px}
+  .semad-hero .hero-card{display:none!important}
+  .semad-hero .hero-content{width:100%;max-width:760px}
+  .semad-hero h1{font-size:clamp(2.4rem,6vw,4.3rem);max-width:700px}
+  .semad-hero .hero-text{max-width:650px}
+  .semad-hero .hero-visual{opacity:.08}
+}
+@media(max-width:700px){
+  .semad-hero{min-height:590px;padding:52px 24px 55px;background-position:62% center}
+  .semad-hero h1{font-size:clamp(2.15rem,8.5vw,3.1rem)}
+  .semad-hero .hero-text{font-size:1rem}
+  .semad-hero .hero-actions{gap:10px}
+  .semad-hero .hero-actions .button{padding:12px 14px;font-size:.82rem}
+  .semad-hero .slide-controls{margin-top:25px}
+  .semad-hero .tagline{margin-top:20px}
+}
