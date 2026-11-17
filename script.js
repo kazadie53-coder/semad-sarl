@@ -143,7 +143,47 @@ function showView() {
     devis:'Contact & devis',emplois:'Emplois & recrutement',fournisseurs:'Fournisseurs',
     clients:'Clients',partenaires:'Partenaires',carrieres:'Carrières & relations'
   }[current] || 'SEMAD SARL')) + ' | SEMAD SARL';
-  window.scrollTo({top:0,behavior:'instant'});
+  window.scrollTo({top:0,behavior:'auto'});
 }
 window.addEventListener('hashchange',showView);
 showView();
+
+// Diaporama institutionnel de la page d'accueil
+const semadSlides = [
+  {eyebrow:'Bienvenue • SEMAD SARL • Kolwezi',title:"Construire aujourd'hui <span>les opportunités de demain.</span>",description:"Une ambition congolaise fondée sur la confiance, l'excellence et le développement, au service des projets et des communautés.",label:'Découvrir notre société',href:'#apropos'},
+  {eyebrow:'Nos domaines d’activité',title:'Des idées concrètes pour <span>un développement responsable.</span>',description:"Commerce, agriculture et élevage, services aux entreprises, formation professionnelle et projet de sécurité et gardiennage : cinq axes à découvrir.",label:'Explorer nos domaines',href:'#services'},
+  {eyebrow:'Notre vision • 2030',title:'Grandir ensemble, <span>avancer durablement.</span>',description:"Notre feuille de route : structurer nos projets, développer les compétences et rechercher des collaborations solides à Kolwezi et au-delà.",label:'Découvrir Vision 2030',href:'vision-2030.html'}
+];
+let semadSlideIndex = 0;
+const semadDots = document.getElementById('slide-dots');
+const semadHero = document.querySelector('.semad-hero');
+if (semadDots && semadHero) {
+  function setSemadSlide(index) {
+    semadSlideIndex = (index + semadSlides.length) % semadSlides.length;
+    const slide = semadSlides[semadSlideIndex];
+    document.getElementById('slide-eyebrow').textContent = slide.eyebrow;
+    document.getElementById('slide-title').innerHTML = slide.title;
+    document.getElementById('slide-description').textContent = slide.description;
+    const primary = document.getElementById('slide-primary');
+    primary.textContent = slide.label;
+    primary.href = slide.href;
+    semadHero.dataset.slide = String(semadSlideIndex);
+    [...semadDots.children].forEach((dot,i) => {
+      dot.setAttribute('aria-pressed',String(i === semadSlideIndex));
+      dot.classList.toggle('active',i === semadSlideIndex);
+    });
+  }
+  semadSlides.forEach((slide,i) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.setAttribute('aria-label','Afficher la diapositive '+(i+1));
+    dot.addEventListener('click',() => setSemadSlide(i));
+    semadDots.appendChild(dot);
+  });
+  document.getElementById('slide-prev').addEventListener('click',()=>setSemadSlide(semadSlideIndex-1));
+  document.getElementById('slide-next').addEventListener('click',()=>setSemadSlide(semadSlideIndex+1));
+  setSemadSlide(0);
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    setInterval(() => {if (!document.hidden && location.hash.replace('#','') !== 'services' && (!location.hash || location.hash === '#accueil')) setSemadSlide(semadSlideIndex+1);},7500);
+  }
+}
