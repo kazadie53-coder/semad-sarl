@@ -187,6 +187,6 @@ if (semadDots && semadHero) {
   document.getElementById('slide-next').addEventListener('click',()=>setSemadSlide(semadSlideIndex+1));
   setSemadSlide(0);
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    setInterval(() => {if (!document.hidden && location.hash.replace('#','') !== 'services' && (!location.hash || location.hash === '#accueil')) setSemadSlide(semadSlideIndex+1);},7500);
+    setInterval(() => {if (!document.hidden && (!location.hash || location.hash === '#accueil')) setSemadSlide(semadSlideIndex+1);},6000);
   }
 }
