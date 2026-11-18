@@ -13,14 +13,13 @@
   // Photographies illustratives par activité, affichées en fond et dans le cercle.
   const photos = [
     "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=88",
-    "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=88",
-    "https://images.unsplash.com/photo-1746395592054-dc3aed101f72?auto=format&fit=crop&w=1600&q=88",
-    "https://images.unsplash.com/photo-1575015826404-cbe87877467f?auto=format&fit=crop&w=1600&q=88",
-    "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=88",
+    "media/formation-informatique.jpg",
+    "media/coupe-couture.jpg",
+    "media/poules-pondeuses.jpg",
+    "media/champ-mais.jpg",
     "https://images.unsplash.com/photo-1662309376159-b95fb193d96b?auto=format&fit=crop&w=1600&q=88",
-    "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1600&q=88"
-  ];
-  function init() {
+    "media/securite-gardiennage.jpg"
+  ];  function init() {
     const hero=document.querySelector('.semad-hero');
     const dots=document.getElementById('slide-dots');
     const prev=document.getElementById('slide-prev');
