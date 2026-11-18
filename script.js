@@ -125,6 +125,14 @@ document.getElementById('service-dialog-contact').addEventListener('click', () =
   serviceDialog.close();
 });
 
+// Préselection du domaine lors d'une demande d'informations depuis une carte.
+document.querySelectorAll('[data-contact-service]').forEach(link => link.addEventListener('click', () => {
+  const item = serviceDetails[Number(link.dataset.contactService)];
+  const select = document.getElementById('service');
+  if (!item || !select) return;
+  const label = item.title === 'Agriculture & élevage' ? 'Agriculture et élevage' : item.title === 'Sécurité & gardiennage' ? 'Sécurité et gardiennage' : item.title;
+  if ([...select.options].some(option => option.value === label)) select.value = label;
+}));
 // Affichage indépendant de chaque rubrique (navigation par vues)
 const pageViews = ['accueil','apropos','services','valeurs','actualites','carrieres','devis'];
 const relationViews = ['emplois','fournisseurs','clients','partenaires'];
