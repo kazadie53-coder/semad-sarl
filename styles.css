@@ -369,3 +369,40 @@ section[hidden],article[hidden]{display:none!important}
  .service-gallery .service-photo-card .service-photo{height:170px!important;max-height:170px!important}
  .service-gallery .service-photo-card .service-card-body{padding:15px!important}
 }
+
+/* Présentation institutionnelle de SEMAD SARL */
+.company-section{background:#fff}
+.company-heading{max-width:920px;margin:0 auto 35px;text-align:center}
+.company-heading h2{font-size:clamp(1.85rem,3.5vw,3rem);color:var(--navy);line-height:1.15;margin:0 0 16px}
+.company-heading>p:last-child{color:var(--muted);font-size:1.04rem}
+.company-overview{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:start}
+.company-main,.company-identity,.company-pillars article,.company-organization,.company-location{border:1px solid var(--line);border-radius:14px}
+.company-main{padding:28px;background:#f7f9fc}
+.company-main h3,.company-organization h3,.company-location h3{color:var(--navy);font-size:1.4rem;margin:0 0 12px}
+.company-main p,.company-organization p,.company-location p{color:var(--muted)}
+.company-note{border-left:4px solid var(--gold);background:#fff;padding:12px 15px;font-size:.88rem}
+.company-identity{overflow:hidden;background:#fff}
+.company-identity img{display:block;width:100%;height:180px;object-fit:cover}
+.company-identity dl{margin:0;padding:10px 22px 18px}
+.company-identity dl>div{padding:9px 0;border-bottom:1px solid var(--line)}
+.company-identity dl>div:last-child{border-bottom:0}
+.company-identity dt{font-size:.75rem;text-transform:uppercase;letter-spacing:.07em;font-weight:800;color:#9b731f}
+.company-identity dd{margin:3px 0 0;font-weight:650;color:var(--navy);font-size:.91rem}
+.company-pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:25px}
+.company-pillars article{padding:23px;background:#fff}
+.company-pillars span{font-weight:900;color:#b18a31;font-size:.8rem}
+.company-pillars h3{margin:6px 0 10px;color:var(--navy);font-size:1.2rem}
+.company-pillars p{color:var(--muted);font-size:.9rem;margin:0}
+.company-organization{display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:28px;margin-top:25px;background:#f7f9fc}
+.company-link{display:inline-block;background:var(--navy);color:#fff;padding:10px 16px;border-radius:6px;font-weight:800;font-size:.86rem;margin-top:8px}
+.company-org-chart{text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px}
+.org-level{background:#fff;border:1px solid #b9c9dc;padding:11px 17px;border-radius:8px;font-weight:800;color:var(--navy);width:min(100%,320px)}
+.org-lead{background:var(--navy);color:#fff}
+.org-functions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%}
+.org-functions span{border:1px solid #d8e2ef;border-radius:7px;padding:10px 8px;background:white;font-size:.78rem;font-weight:750;color:var(--navy)}
+.company-org-chart small{font-size:.73rem;color:var(--muted)}
+.company-location{display:grid;grid-template-columns:.8fr 1.2fr;gap:25px;align-items:center;padding:22px;margin-top:25px}
+.company-location a{font-weight:800;color:var(--blue);font-size:.87rem}
+.company-location iframe{width:100%;height:230px;border:0;border-radius:9px}
+@media(max-width:850px){.company-overview,.company-organization,.company-location{grid-template-columns:1fr}.company-pillars{grid-template-columns:1fr}.company-location iframe{height:210px}}
+@media(max-width:600px){.company-main,.company-organization{padding:20px}.company-identity img{height:145px}.company-heading{text-align:left}.org-functions{grid-template-columns:1fr 1fr}}
