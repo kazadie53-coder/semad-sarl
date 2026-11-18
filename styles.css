@@ -329,3 +329,22 @@ section[hidden],article[hidden]{display:none!important}
 .service-legal-note{max-width:920px;margin:28px auto 0;color:var(--muted);font-size:.85rem;text-align:center}
 @media(max-width:1000px){.service-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.service-gallery{grid-template-columns:1fr}.service-photo{height:235px}.service-card-body{padding:20px}}
+
+/* Correctif prioritaire : neutraliser les dimensions héritées de l'ancien bouton plein format. */
+.service-gallery .service-photo-card .service-card-actions{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:12px;flex-wrap:wrap;width:100%;margin-top:auto}
+.service-gallery .service-photo-card .service-card-actions .service-open{
+ display:inline-flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;
+ width:auto!important;min-width:0!important;max-width:100%!important;height:auto!important;min-height:0!important;
+ flex:0 0 auto!important;align-self:auto!important;margin:0!important;padding:11px 16px!important;
+ font-size:.88rem!important;line-height:1.25!important;text-align:center!important;
+ border:0!important;border-radius:7px!important;background:#102c54!important;color:#fff!important;
+ box-shadow:none!important;white-space:normal!important;
+}
+.service-gallery .service-photo-card .service-card-actions .service-open:hover{background:#20518b!important}
+.service-gallery .service-photo-card .service-card-actions .service-contact-link{
+ display:inline-flex!important;width:auto!important;min-height:0!important;align-items:center!important;
+ padding:8px 0!important;font-size:.85rem!important;line-height:1.35!important;color:#17477b!important;
+ background:transparent!important;
+}
+.service-gallery .service-photo-card .service-card-body{min-height:265px}
+@media(max-width:650px){.service-gallery .service-photo-card .service-card-body{min-height:0}}
