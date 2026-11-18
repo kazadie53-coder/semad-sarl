@@ -236,3 +236,12 @@ main>.section:not([hidden]){min-height:65vh}
   .semad-hero .hero-photo-ring figcaption{font-size:.63rem}
 }
 @media(prefers-reduced-motion:reduce){.semad-hero[data-slide]{transition:none}}
+
+/* Mise en valeur des 7 images : fond photographique flou, cercle net type NETIS. */
+.semad-hero[data-slide]{overflow:hidden!important;position:relative!important}
+.semad-hero[data-slide]::before{filter:blur(8px) saturate(1.12)!important;opacity:1!important;transform:scale(1.07)!important}
+.semad-hero[data-slide]::after{background:linear-gradient(90deg,rgba(4,21,42,.82) 0%,rgba(5,28,51,.66) 47%,rgba(7,30,55,.27) 100%)!important}
+.semad-hero .hero-photo-ring{width:min(100%,490px)!important;flex-shrink:0;box-shadow:0 0 0 12px rgba(255,255,255,.13),0 0 0 22px rgba(214,173,76,.22),0 24px 65px rgba(0,0,0,.35)!important}
+.semad-hero .hero-photo-ring img{object-fit:cover!important;object-position:center!important}
+@media(max-width:1150px){.semad-hero .hero-photo-ring{width:min(100%,365px)!important}}
+@media(max-width:760px){.semad-hero .hero-photo-ring{width:min(76vw,330px)!important}.semad-hero[data-slide]::after{background:linear-gradient(180deg,rgba(4,21,42,.82),rgba(5,28,51,.49) 57%,rgba(7,30,55,.18))!important}}
