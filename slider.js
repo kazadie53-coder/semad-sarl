@@ -7,7 +7,8 @@
     ["Formation professionnelle • Coupe et couture","Apprendre un métier, <span>créer des opportunités.</span>","Des ateliers pratiques de coupe et couture sont envisagés pour valoriser les savoir-faire.","Découvrir la formation","#services"],
     ["Agriculture & élevage • Aviculture","Préparer un élevage <span>avicole responsable.</span>","Notre projet d'élevage de poussins femelles et de poules pondeuses se construit progressivement.","Découvrir l'aviculture","#services"],
     ["Agriculture • Culture du maïs","Cultiver la terre, <span>préparer l'avenir.</span>","Des projets de culture du maïs pour contribuer à la production alimentaire locale.","Découvrir nos projets","#services"],
-    ["Commerce • Équipements de protection","Des équipements adaptés <span>aux exigences du terrain.</span>","Commerce envisagé d'EPI : casques, gilets, chaussures de sécurité et accessoires.","Découvrir le commerce","#services"]
+    ["Commerce • Équipements de protection","Des équipements adaptés <span>aux exigences du terrain.</span>","Commerce envisagé d'EPI : casques, gilets, chaussures de sécurité et accessoires.","Découvrir le commerce","#services"],
+    ["Sécurité & gardiennage • Département sécurité","Protéger les personnes, <span>les biens et les installations.</span>","Découvrez notre projet de département Sécurité & Gardiennage : surveillance, contrôle des accès et prévention des risques, sous réserve des autorisations requises.","Découvrir la sécurité","#services"]
   ];
   function init() {
     const hero=document.querySelector('.semad-hero');
@@ -20,6 +21,7 @@
     const primary=document.getElementById('slide-primary');
     if (![hero,dots,prev,next,eyebrow,title,description,primary].every(Boolean)) return;
     let index=0;
+    let timer;
     dots.replaceChildren();
     function show(i) {
       index=(i+slides.length)%slides.length;
@@ -29,11 +31,12 @@
       primary.textContent=s[3];primary.href=s[4];
       [...dots.children].forEach((dot,n)=>{dot.classList.toggle('active',n===index);dot.setAttribute('aria-pressed',String(n===index));});
     }
-    slides.forEach((_,n)=>{const dot=document.createElement('button');dot.type='button';dot.setAttribute('aria-label','Afficher la diapositive '+(n+1));dot.addEventListener('click',()=>show(n));dots.appendChild(dot);});
-    prev.addEventListener('click',()=>show(index-1));
-    next.addEventListener('click',()=>show(index+1));
+    slides.forEach((_,n)=>{const dot=document.createElement('button');dot.type='button';dot.setAttribute('aria-label','Afficher la diapositive '+(n+1));dot.addEventListener('click',()=>{show(n);restart();});dots.appendChild(dot);});
+    function restart(){window.clearInterval(timer);timer=window.setInterval(()=>{if(!document.hidden && (!location.hash || location.hash==='#accueil'))show(index+1);},6500);}
+    prev.addEventListener('click',()=>{show(index-1);restart();});
+    next.addEventListener('click',()=>{show(index+1);restart();});
     show(0);
-    window.setInterval(()=>{if (!document.hidden && (!location.hash || location.hash==='#accueil')) show(index+1);},6000);
+    restart();
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init,{once:true}); else init();
 })();
