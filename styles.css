@@ -245,3 +245,46 @@ main>.section:not([hidden]){min-height:65vh}
 .semad-hero .hero-photo-ring img{object-fit:cover!important;object-position:center!important}
 @media(max-width:1150px){.semad-hero .hero-photo-ring{width:min(100%,365px)!important}}
 @media(max-width:760px){.semad-hero .hero-photo-ring{width:min(76vw,330px)!important}.semad-hero[data-slide]::after{background:linear-gradient(180deg,rgba(4,21,42,.82),rgba(5,28,51,.49) 57%,rgba(7,30,55,.18))!important}}
+
+/* Bannière SEMAD inspirée de la composition de référence : photographie de fond lisible,
+   grand anneau organique bleu et or, image ronde nette au premier plan. */
+.semad-hero[data-slide]{
+  min-height:700px!important;
+  grid-template-columns:minmax(0,1.08fr) minmax(350px,.92fr)!important;
+  gap:clamp(26px,4vw,70px)!important;
+  padding:clamp(65px,7vw,115px) clamp(25px,8vw,130px)!important;
+}
+.semad-hero[data-slide]::before{
+  inset:0!important;
+  transform:scale(1.025)!important;
+  filter:blur(3px) saturate(1.08)!important;
+  background-position:center center!important;
+}
+.semad-hero[data-slide]::after{
+  background:linear-gradient(103deg,rgba(5,43,74,.88) 0%,rgba(7,83,113,.78) 52%,rgba(7,98,114,.40) 100%)!important;
+}
+.semad-hero .hero-photo-ring{
+  width:min(100%,500px)!important;
+  padding:clamp(22px,3.6vw,52px)!important;
+  background:linear-gradient(145deg,#0c7fa3 0%,#168caa 40%,#d6ad4c 76%,#f3d27b 100%)!important;
+  box-shadow:0 0 0 26px rgba(8,143,171,.30),0 0 0 55px rgba(11,131,157,.12),0 20px 65px rgba(0,0,0,.24)!important;
+  border-radius:48% 52% 51% 49% / 49% 46% 54% 51%!important;
+}
+.semad-hero .hero-photo-ring img{
+  border:0!important;
+  border-radius:50%!important;
+  box-shadow:0 0 0 4px rgba(255,255,255,.13);
+}
+.semad-hero .hero-photo-ring figcaption{bottom:5%!important}
+.semad-hero .hero-content{max-width:700px!important}
+.semad-hero .hero-content h1{font-size:clamp(2.45rem,4.2vw,4.3rem)!important}
+@media(max-width:1150px){
+  .semad-hero[data-slide]{grid-template-columns:minmax(0,1fr) minmax(260px,.8fr)!important;padding:70px 6vw!important}
+  .semad-hero .hero-photo-ring{width:min(100%,390px)!important}
+}
+@media(max-width:760px){
+  .semad-hero[data-slide]{display:flex!important;flex-direction:column!important;gap:48px!important;padding:48px 22px 65px!important}
+  .semad-hero[data-slide]::after{background:linear-gradient(180deg,rgba(5,43,74,.89),rgba(7,83,113,.72) 60%,rgba(7,98,114,.37))!important}
+  .semad-hero .hero-photo-ring{width:min(74vw,325px)!important;padding:24px!important;align-self:center!important}
+  .semad-hero .hero-content h1{font-size:clamp(2.1rem,8vw,3rem)!important}
+}
