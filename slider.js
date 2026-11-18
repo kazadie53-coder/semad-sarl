@@ -10,12 +10,13 @@
     ["Commerce • Équipements de protection","Des équipements adaptés <span>aux exigences du terrain.</span>","Commerce envisagé d'EPI : casques, gilets, chaussures de sécurité et accessoires.","Découvrir le commerce","#services"],
     ["Sécurité & gardiennage • Département sécurité","Protéger les personnes, <span>les biens et les installations.</span>","Découvrez notre projet de département Sécurité & Gardiennage : surveillance, contrôle des accès et prévention des risques, sous réserve des autorisations requises.","Découvrir la sécurité","#services"]
   ];
+  // Photographies illustratives par activité, affichées en fond et dans le cercle.
   const photos = [
     "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=88",
-    "https://images.unsplash.com/photo-1743834147172-37c12011b321?auto=format&fit=crop&w=1600&q=88",
+    "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=88",
     "https://images.unsplash.com/photo-1746395592054-dc3aed101f72?auto=format&fit=crop&w=1600&q=88",
     "https://images.unsplash.com/photo-1575015826404-cbe87877467f?auto=format&fit=crop&w=1600&q=88",
-    "https://images.unsplash.com/photo-1567547921486-f280c2f53b5d?auto=format&fit=crop&w=1600&q=88",
+    "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=88",
     "https://images.unsplash.com/photo-1662309376159-b95fb193d96b?auto=format&fit=crop&w=1600&q=88",
     "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1600&q=88"
   ];
@@ -38,6 +39,7 @@
       const s=slides[index];
       hero.dataset.slide=String(index);
       hero.style.setProperty("--slide-photo", "url(\'"+photos[index]+"\')");
+      photo.onerror=function(){this.onerror=null;this.src="logo-semad.png";};
       photo.src=photos[index];
       photo.alt="Photo illustrative : "+s[0];
       eyebrow.textContent=s[0];title.innerHTML=s[1];description.textContent=s[2];
