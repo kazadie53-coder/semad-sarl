@@ -288,3 +288,6 @@ main>.section:not([hidden]){min-height:65vh}
   .semad-hero .hero-photo-ring{width:min(74vw,325px)!important;padding:24px!important;align-self:center!important}
   .semad-hero .hero-content h1{font-size:clamp(2.1rem,8vw,3rem)!important}
 }
+
+/* Aucun libellé superposé aux photographies du diaporama. */
+.semad-hero .hero-photo-ring figcaption{display:none!important}
