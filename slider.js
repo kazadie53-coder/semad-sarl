@@ -10,6 +10,15 @@
     ["Commerce • Équipements de protection","Des équipements adaptés <span>aux exigences du terrain.</span>","Commerce envisagé d'EPI : casques, gilets, chaussures de sécurité et accessoires.","Découvrir le commerce","#services"],
     ["Sécurité & gardiennage • Département sécurité","Protéger les personnes, <span>les biens et les installations.</span>","Découvrez notre projet de département Sécurité & Gardiennage : surveillance, contrôle des accès et prévention des risques, sous réserve des autorisations requises.","Découvrir la sécurité","#services"]
   ];
+  const photos = [
+    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=88",
+    "https://images.unsplash.com/photo-1743834147172-37c12011b321?auto=format&fit=crop&w=1600&q=88",
+    "https://images.unsplash.com/photo-1746395592054-dc3aed101f72?auto=format&fit=crop&w=1600&q=88",
+    "https://images.unsplash.com/photo-1575015826404-cbe87877467f?auto=format&fit=crop&w=1600&q=88",
+    "https://images.unsplash.com/photo-1567547921486-f280c2f53b5d?auto=format&fit=crop&w=1600&q=88",
+    "https://images.unsplash.com/photo-1662309376159-b95fb193d96b?auto=format&fit=crop&w=1600&q=88",
+    "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1600&q=88"
+  ];
   function init() {
     const hero=document.querySelector('.semad-hero');
     const dots=document.getElementById('slide-dots');
@@ -19,7 +28,8 @@
     const title=document.getElementById('slide-title');
     const description=document.getElementById('slide-description');
     const primary=document.getElementById('slide-primary');
-    if (![hero,dots,prev,next,eyebrow,title,description,primary].every(Boolean)) return;
+    const photo=document.getElementById('slide-photo');
+    if (![hero,dots,prev,next,eyebrow,title,description,primary,photo].every(Boolean)) return;
     let index=0;
     let timer;
     dots.replaceChildren();
@@ -27,6 +37,9 @@
       index=(i+slides.length)%slides.length;
       const s=slides[index];
       hero.dataset.slide=String(index);
+      hero.style.setProperty("--slide-photo", "url(\'"+photos[index]+"\')");
+      photo.src=photos[index];
+      photo.alt="Photo illustrative : "+s[0];
       eyebrow.textContent=s[0];title.innerHTML=s[1];description.textContent=s[2];
       primary.textContent=s[3];primary.href=s[4];
       [...dots.children].forEach((dot,n)=>{dot.classList.toggle('active',n===index);dot.setAttribute('aria-pressed',String(n===index));});
