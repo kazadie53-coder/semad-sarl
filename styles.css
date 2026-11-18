@@ -348,3 +348,24 @@ section[hidden],article[hidden]{display:none!important}
 }
 .service-gallery .service-photo-card .service-card-body{min-height:265px}
 @media(max-width:650px){.service-gallery .service-photo-card .service-card-body{min-height:0}}
+
+/* Cartes compactes : réduction réelle de la hauteur photo + contenu + espaces. */
+.service-gallery{gap:16px!important;align-items:start!important}
+.service-gallery .service-photo-card{height:auto!important;min-height:0!important;border-radius:12px!important}
+.service-gallery .service-photo-card .service-photo{height:150px!important;max-height:150px!important;object-fit:cover!important}
+.service-gallery .service-photo-card .service-card-body{
+ padding:15px 17px 17px!important;min-height:0!important;height:auto!important;display:block!important
+}
+.service-gallery .service-photo-card .service-number{font-size:.66rem!important}
+.service-gallery .service-photo-card h3{font-size:1.14rem!important;line-height:1.2!important;margin:5px 0 6px!important}
+.service-gallery .service-photo-card .service-card-body>p{
+ min-height:0!important;height:auto!important;flex:none!important;margin:0 0 12px!important;
+ font-size:.84rem!important;line-height:1.45!important
+}
+.service-gallery .service-photo-card .service-card-actions{margin-top:0!important;gap:8px!important}
+.service-gallery .service-photo-card .service-card-actions .service-open{padding:8px 11px!important;font-size:.78rem!important}
+.service-gallery .service-photo-card .service-card-actions .service-contact-link{font-size:.77rem!important;padding:5px 0!important}
+@media(max-width:650px){
+ .service-gallery .service-photo-card .service-photo{height:170px!important;max-height:170px!important}
+ .service-gallery .service-photo-card .service-card-body{padding:15px!important}
+}
