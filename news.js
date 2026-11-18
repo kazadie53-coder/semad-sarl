@@ -12,10 +12,15 @@
       if (!posts.length) return;
       container.innerHTML = '';
       container.classList.add('news-accordion');
+      const count = document.getElementById('news-count');
+      const search = document.getElementById('news-search');
+      const total = posts.length;
+      if (count) count.textContent = total + (total > 1 ? ' publications' : ' publication');
 
-      posts.slice().sort((a, b) => (b.date || '').localeCompare(a.date || '')).forEach(post => {
+      posts.slice().sort((a, b) => (b.date || '').localeCompare(a.date || '')).forEach((post, index) => {
         const article = document.createElement('details');
         article.className = 'news-entry';
+        article.dataset.search = [post.title, post.summary, post.content].join(' ').toLocaleLowerCase('fr-FR');
 
         const heading = document.createElement('summary');
         heading.className = 'news-entry-heading';
@@ -68,6 +73,17 @@
             if (other !== article) other.open = false;
           });
         });
+      });
+      if (search) search.addEventListener('input', () => {
+        const term = search.value.trim().toLocaleLowerCase('fr-FR');
+        let visible = 0;
+        container.querySelectorAll('.news-entry').forEach(article => {
+          const match = article.dataset.search.includes(term);
+          article.hidden = !match;
+          if (!match) article.open = false;
+          if (match) visible++;
+        });
+        if (count) count.textContent = visible + (visible > 1 ? ' publications' : ' publication') + (term ? ' trouvée(s)' : '');
       });
     })
     .catch(() => {
