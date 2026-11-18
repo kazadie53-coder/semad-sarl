@@ -139,12 +139,14 @@ const relationViews = ['emplois','fournisseurs','clients','partenaires'];
 const viewSections = pageViews.map(id => document.getElementById(id));
 const relationCards = relationViews.map(id => document.getElementById(id));
 const relationsHeading = document.querySelector('#carrieres > .section-heading');
+const relationsOverview = document.getElementById('relations-overview');
 function showView() {
   const requested = decodeURIComponent(location.hash.slice(1));
   const current = [...pageViews,...relationViews].includes(requested) ? requested : 'accueil';
   const isRelation = relationViews.includes(current);
   viewSections.forEach(section => { section.hidden = section.id !== (isRelation ? 'carrieres' : current); });
   relationCards.forEach(card => { card.hidden = !isRelation || card.id !== current; });
+  if (relationsOverview) relationsOverview.hidden = current !== 'carrieres';
   if (relationsHeading) relationsHeading.hidden = isRelation;
   document.title = (current === 'accueil' ? 'Bienvenue' : ({
     apropos:'À propos',services:'Nos services',valeurs:'Nos valeurs',actualites:'Actualités',
