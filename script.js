@@ -34,7 +34,7 @@ document.addEventListener('click', event => {
   if (!event.target.closest('.nav-group')) closeDropdowns();
 });
 document.addEventListener('keydown', event => {
-  if (event.key === 'Escape') closeDropdowns();
+  if (event.key === 'Escape') { closeDropdowns(); nav.classList.remove('open'); menuButton.setAttribute('aria-expanded','false'); menuButton.textContent='☰'; menuButton.focus(); }
 });
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -143,6 +143,8 @@ function showView() {
     devis:'Contact & devis',emplois:'Emplois & recrutement',fournisseurs:'Fournisseurs',
     clients:'Clients',partenaires:'Partenaires',carrieres:'Carrières & relations'
   }[current] || 'SEMAD SARL')) + ' | SEMAD SARL';
+  document.querySelectorAll('.nav-dropdown a, .navigation > .nav-cta').forEach(link => { const active=link.getAttribute('href')==='#'+current; if(active) link.setAttribute('aria-current','page'); else link.removeAttribute('aria-current'); });
+  document.querySelectorAll('.nav-group').forEach(group=>{const active=!!group.querySelector('a[aria-current="page"]');group.classList.toggle('nav-group-active',active);});
   window.scrollTo({top:0,behavior:'auto'});
 }
 window.addEventListener('hashchange',showView);
