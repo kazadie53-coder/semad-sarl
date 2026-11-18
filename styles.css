@@ -291,3 +291,24 @@ main>.section:not([hidden]){min-height:65vh}
 
 /* Aucun libellé superposé aux photographies du diaporama. */
 .semad-hero .hero-photo-ring figcaption{display:none!important}
+
+/* Navigation SEMAD : menus clairs, état actif et adaptation tactile. */
+.navigation{gap:clamp(8px,1.3vw,20px)}
+.nav-dropdown{min-width:270px;max-width:min(92vw,350px);padding:10px!important;border-top:3px solid var(--gold)!important}
+.nav-dropdown a{line-height:1.35;transition:background-color .15s ease,padding-left .15s ease}
+.nav-dropdown a:hover{padding-left:17px;background:#edf3fa!important}
+.nav-dropdown a[aria-current="page"]{background:#edf3fa!important;color:#0e4977!important;font-weight:800}
+.nav-group-active>.nav-dropdown-toggle{color:#0d5b89!important}
+.nav-dropdown-toggle[aria-expanded="true"]{box-shadow:inset 0 -3px 0 var(--gold)}
+.navigation .nav-cta{border-radius:7px}
+.navigation .nav-cta:hover{background:#20518b}
+.navigation a:focus-visible,.menu-toggle:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+section[hidden],article[hidden]{display:none!important}
+@media(max-width:900px){
+ .navigation{gap:10px!important;align-items:stretch!important}
+ .navigation .nav-group{width:100%}
+ .navigation .nav-dropdown-toggle{width:100%;justify-content:space-between;padding:14px 12px;background:#f5f8fc}
+ .navigation .nav-dropdown{position:static!important;max-width:none!important;width:100%;box-shadow:none!important;border:0!important;border-left:3px solid var(--gold)!important;border-radius:0 0 8px 8px!important;margin:3px 0 9px!important}
+ .navigation .nav-dropdown a{padding:12px 14px}
+ .navigation .nav-cta{display:block;text-align:center}
+}
