@@ -160,3 +160,45 @@ function showView() {
 window.addEventListener('hashchange',showView);
 showView();
 
+
+
+// Candidatures spontanées : transmission avec pièce jointe par FormSubmit.
+// Aucun CV n'est stocké dans le dépôt GitHub ni dans le navigateur.
+const careerForm = document.getElementById('career-form');
+if (careerForm) careerForm.addEventListener('submit', async event => {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const status = document.getElementById('career-status');
+  const submit = form.querySelector('button[type="submit"]');
+  const cv = document.getElementById('career-cv').files[0];
+  if (!form.reportValidity()) return;
+  if (!cv || !/\.(pdf|doc|docx)$/i.test(cv.name)) {
+    status.textContent = 'Veuillez sélectionner un CV au format PDF ou Word.';
+    return;
+  }
+  if (cv.size > 5 * 1024 * 1024) {
+    status.textContent = 'Le CV dépasse 5 Mo. Veuillez choisir un fichier plus léger.';
+    return;
+  }
+  const data = new FormData(form);
+  data.set('_subject', 'Candidature spontanée SEMAD SARL — ' + data.get('domaine'));
+  data.set('_captcha', 'false');
+  data.set('_template', 'table');
+  submit.disabled = true;
+  status.textContent = 'Envoi de votre candidature et du CV en cours…';
+  try {
+    const response = await fetch('https://formsubmit.co/ajax/' + CONTACT_EMAIL, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: data
+    });
+    const result = await response.json();
+    if (!response.ok || result.success === false || result.success === 'false') throw new Error('Formulaire non transmis');
+    status.textContent = 'Votre candidature a été transmise au service de réception. Vérifiez auprès de SEMAD SARL si vous ne recevez pas de confirmation. Merci !';
+    form.reset();
+  } catch (error) {
+    status.textContent = 'La transmission a échoué. Vérifiez votre connexion ou utilisez le lien « Ou postuler par e-mail » en joignant votre CV.';
+  } finally {
+    submit.disabled = false;
+  }
+});
