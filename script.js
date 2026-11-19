@@ -168,7 +168,7 @@ const careerForm = document.getElementById('career-form');
 if (careerForm) careerForm.addEventListener('submit', event => {
   const status = document.getElementById('career-status');
   const cv = document.getElementById('career-cv').files[0];
-  if (!cv || !/\\.(pdf|doc|docx)$/i.test(cv.name)) {
+  if (!cv || !['.pdf', '.doc', '.docx'].some(ext => cv.name.toLowerCase().endsWith(ext))) {
     event.preventDefault();
     status.textContent = 'Veuillez joindre un CV au format PDF ou Word.';
     return;
