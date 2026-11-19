@@ -162,21 +162,6 @@ showView();
 
 
 
-// Envoi natif multipart/form-data vers FormSubmit : permet de transmettre le CV.
-// Le navigateur assure la soumission ; la réception réelle doit être vérifiée par e-mail.
-const careerForm = document.getElementById('career-form');
-if (careerForm) careerForm.addEventListener('submit', event => {
-  const status = document.getElementById('career-status');
-  const cv = document.getElementById('career-cv').files[0];
-  if (!cv || !['.pdf', '.doc', '.docx'].some(ext => cv.name.toLowerCase().endsWith(ext))) {
-    event.preventDefault();
-    status.textContent = 'Veuillez joindre un CV au format PDF ou Word.';
-    return;
-  }
-  if (cv.size > 5 * 1024 * 1024) {
-    event.preventDefault();
-    status.textContent = 'Le CV dépasse la limite de 5 Mo. Choisissez un fichier plus léger.';
-    return;
-  }
-  status.textContent = 'Envoi du dossier en cours. Attendez la confirmation de FormSubmit et vérifiez la réception du CV par e-mail.';
-});
+// Le navigateur soumet directement le formulaire multipart/form-data à FormSubmit.
+// Le champ CV est requis et son type est restreint dans index.html.
+// La réception du fichier doit être confirmée dans la boîte e-mail.
