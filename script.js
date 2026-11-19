@@ -162,52 +162,21 @@ showView();
 
 
 
-// Candidatures spontanées : vérification des fichiers, retour d'erreur explicite
-// et solution de secours par courriel. Ne jamais considérer une réponse réseau
-// comme une preuve de réception dans la boîte e-mail de SEMAD SARL.
+// Envoi natif multipart/form-data vers FormSubmit : permet de transmettre le CV.
+// Le navigateur assure la soumission ; la réception réelle doit être vérifiée par e-mail.
 const careerForm = document.getElementById('career-form');
-if (careerForm) careerForm.addEventListener('submit', async event => {
-  event.preventDefault();
-  const form = event.currentTarget;
+if (careerForm) careerForm.addEventListener('submit', event => {
   const status = document.getElementById('career-status');
-  const submit = form.querySelector('button[type="submit"]');
   const cv = document.getElementById('career-cv').files[0];
-  if (!form.reportValidity()) return;
-  if (!cv || !/\.(pdf|doc|docx)$/i.test(cv.name)) {
+  if (!cv || !/\\.(pdf|doc|docx)$/i.test(cv.name)) {
+    event.preventDefault();
     status.textContent = 'Veuillez joindre un CV au format PDF ou Word.';
     return;
   }
   if (cv.size > 5 * 1024 * 1024) {
+    event.preventDefault();
     status.textContent = 'Le CV dépasse la limite de 5 Mo. Choisissez un fichier plus léger.';
     return;
   }
-  const data = new FormData(form);
-  data.set('_subject', 'Candidature spontanée SEMAD SARL — ' + data.get('domaine'));
-  data.set('_template', 'table');
-  // Ne pas désactiver les protections du prestataire.
-  submit.disabled = true;
-  status.textContent = 'Transmission en cours… Ne fermez pas cette page.';
-  try {
-    const response = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(CONTACT_EMAIL), {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: data
-    });
-    let result = {};
-    try { result = await response.json(); }
-    catch (_) { throw new Error('Réponse du service illisible.'); }
-    if (!response.ok || result.success === false || result.success === 'false') {
-      const detail = typeof result.message === 'string' ? result.message : '';
-      throw new Error(detail || ('Service indisponible (HTTP ' + response.status + ').'));
-    }
-    status.textContent = 'Demande acceptée par le service de formulaire. IMPORTANT : SEMAD SARL doit vérifier la réception du courriel et du CV, ainsi que l’éventuel e-mail d’activation FormSubmit (boîte de réception et spams).';
-    // Conserver les champs pour permettre un renvoi par e-mail si la réception n'est pas confirmée.
-  } catch (error) {
-    const message = error instanceof TypeError
-      ? 'Connexion au service impossible (réseau ou accès bloqué).'
-      : (error.message || 'Erreur de transmission.');
-    status.textContent = message + ' Aucun envoi confirmé. Utilisez « Postuler directement par e-mail » et joignez votre CV manuellement. Le lien e-mail ne joint pas automatiquement le fichier.';
-  } finally {
-    submit.disabled = false;
-  }
+  status.textContent = 'Envoi du dossier en cours. Attendez la confirmation de FormSubmit et vérifiez la réception du CV par e-mail.';
 });
