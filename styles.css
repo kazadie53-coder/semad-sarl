@@ -487,3 +487,19 @@ section[hidden],article[hidden]{display:none!important}
 .relation-form-actions button{cursor:pointer}
 .relation-form-actions a{font-size:.86rem;font-weight:800;color:#17517e}
 @media(max-width:650px){.relation-form-grid{grid-template-columns:1fr}.relation-form-actions{flex-direction:column;align-items:stretch}.relation-form-actions button{width:100%}}
+
+/* Confort de saisie sur mobile — espaces professionnels */
+.form-process-note{margin:0 0 16px;padding:11px 14px;border-left:3px solid #b89549;background:#f7f9fc;color:#344962;font-size:.86rem;line-height:1.55;border-radius:5px}
+.relation-form-grid :is(input,select,textarea),.career-form-grid :is(input,select,textarea){min-height:44px}
+.relation-form-grid select{box-sizing:border-box;width:100%;min-width:0;padding:12px;border:1px solid #c7d4e4;border-radius:7px;background:#fff;color:#173251;font:inherit;font-weight:400}
+.relation-form-grid :is(input,select,textarea):focus-visible{outline:3px solid #d6ab49;outline-offset:2px}
+@media(max-width:650px){
+ #carrieres .relation-card:not([hidden]){padding:18px 14px}
+ .career-form-grid,.relation-form-grid{gap:15px}
+ .career-form-grid :is(input,select,textarea),.relation-form-grid :is(input,select,textarea){font-size:16px}
+ .career-actions button,.relation-form-actions button{min-height:48px;white-space:normal}
+ .career-actions a,.relation-form-actions a{display:inline-flex;min-height:44px;align-items:center;justify-content:center;text-align:center}
+ .career-form-grid .international-phone{min-width:0}
+ .career-form-grid .international-phone select{font-size:16px}
+ .form-process-note{font-size:.85rem}
+}
