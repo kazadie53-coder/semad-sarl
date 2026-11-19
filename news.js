@@ -22,7 +22,7 @@
   };
   fetchPosts()
     .then(data => {
-      const posts = Array.isArray(data.posts) ? data.posts : [];
+      const posts = (Array.isArray(data.posts) ? data.posts : []).filter(p => !String(p.title||'').startsWith('[RECRUTEMENT] '));
       if (!posts.length) return;
       container.innerHTML = '';
       container.classList.add('news-accordion');
