@@ -438,3 +438,34 @@ section[hidden],article[hidden]{display:none!important}
 .relation-link{background:var(--navy);color:#fff!important;padding:11px 16px;border-radius:7px;text-decoration:none!important;font-size:.88rem}
 .relation-link:hover{background:#20518b}
 @media(max-width:650px){.relations-overview{grid-template-columns:1fr}.relations-overview>a{padding:19px}#carrieres .relation-card:not([hidden]){padding:20px}}
+
+/* Emplois : annonces vérifiées et formulaire de candidature spontanée */
+#carrieres .career-panel:not([hidden]){max-width:900px}
+.career-vacancies{margin:24px 0 30px;padding:19px 22px;background:#f4f7fb;border:1px solid #d8e2ef;border-left:4px solid #d6ab49;border-radius:10px}
+.career-vacancies-heading{display:flex;gap:12px;align-items:center;margin-bottom:12px;color:var(--navy)}
+.career-vacancies-heading>span{font-size:1.5rem;color:#b08a34}
+.career-vacancies-heading>div{display:flex;flex-direction:column;gap:3px}
+.career-vacancies-heading strong{font-size:1.1rem}
+.career-vacancies-heading small{color:var(--muted);font-size:.8rem}
+.career-vacancies p{margin:0;font-size:.91rem;color:var(--muted)}
+.career-form-heading{border-top:1px solid #d8e2ef;padding-top:24px}
+.career-form-heading h4{font-size:1.45rem;color:var(--navy);margin:6px 0 8px}
+.career-form-heading p:last-child{color:var(--muted);font-size:.9rem}
+.career-form{margin-top:18px}
+.career-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.career-form-grid label{display:flex;flex-direction:column;gap:7px;font-weight:800;font-size:.84rem;color:var(--navy)}
+.career-form-grid .career-wide{grid-column:1/-1}
+.career-form-grid input,.career-form-grid select,.career-form-grid textarea{box-sizing:border-box;width:100%;min-width:0;padding:11px 12px;border:1px solid #c7d4e4;border-radius:7px;background:#fff;color:#173251;font:inherit;font-weight:400;font-size:.94rem}
+.career-form-grid textarea{resize:vertical}
+.career-form-grid input[type=file]{font-size:.83rem}
+.career-form-grid small{font-weight:400;color:var(--muted);font-size:.77rem}
+.career-form-grid :is(input,select,textarea):focus-visible{outline:3px solid #d6ab49;outline-offset:2px}
+.career-consent{display:flex;align-items:flex-start;gap:11px;margin-top:19px;font-size:.84rem;line-height:1.5;color:var(--navy)}
+.career-consent input{width:18px;height:18px;flex-shrink:0;margin-top:2px}
+.career-privacy{font-size:.78rem;color:var(--muted);margin:11px 0 18px}
+.career-actions{display:flex;align-items:center;gap:17px;flex-wrap:wrap}
+.career-actions button{cursor:pointer}
+.career-actions button:disabled{opacity:.6;cursor:wait}
+.career-actions a{color:#17517e;font-weight:800;font-size:.85rem}
+.career-status{font-size:.87rem;font-weight:700;color:var(--navy);margin:12px 0 0}
+@media(max-width:650px){.career-form-grid{grid-template-columns:1fr}.career-vacancies{padding:16px}.career-actions{align-items:stretch;flex-direction:column}.career-actions button{width:100%}}
