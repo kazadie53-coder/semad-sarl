@@ -2,11 +2,25 @@
   const container = document.getElementById('news-list');
   if (!container) return;
 
-  fetch('./news.json', { cache: 'no-store' })
-    .then(response => {
-      if (!response.ok) throw new Error('Impossible de charger les actualités');
-      return response.json();
-    })
+  const fetchPosts = async () => {
+    const local = await fetch('./news.json', {cache:'no-store'}).then(r => r.ok ? r.json() : {posts:[]}).catch(() => ({posts:[]}));
+    const posts = Array.isArray(local.posts) ? local.posts : [];
+    try {
+      const response = await fetch('./admin/config.json', {cache:'no-store'});
+      if (!response.ok) throw new Error('Configuration indisponible');
+      const config = await response.json();
+      if (!config.url || !config.publishableKey || config.publishableKey.includes('REMPLACER')) throw new Error('Configuration incomplète');
+      const result = await fetch(config.url + '/rest/v1/semad_posts?select=title,date,summary,content&order=date.desc', {
+        headers: {apikey:config.publishableKey}, cache:'no-store'
+      });
+      if (!result.ok) throw new Error('Actualités distantes indisponibles');
+      return {posts: [...await result.json(), ...posts]};
+    } catch (error) {
+      console.warn('Actualités Supabase indisponibles, affichage local maintenu.', error);
+      return {posts};
+    }
+  };
+  fetchPosts()
     .then(data => {
       const posts = Array.isArray(data.posts) ? data.posts : [];
       if (!posts.length) return;
