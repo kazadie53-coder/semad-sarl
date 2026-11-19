@@ -2,7 +2,7 @@
 // À déployer dans Supabase Edge Functions sous le nom semad-receive-application.
 // Secrets requis : SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, TURNSTILE_SECRET_KEY,
 // RESEND_API_KEY, SEMAD_NOTIFICATION_FROM.
-// Bucket privé requis : semad-cvs. Table : public.semad_applications.
+// Bucket privé requis : semad-cv. Table : public.semad_applications.
 // Cette fonction n'est PAS active tant qu'elle n'est pas déployée et configurée.
 import { createClient } from "npm:@supabase/supabase-js@2";
 
@@ -61,7 +61,7 @@ Deno.serve(async (req) => {
     const db = createClient(url, serviceKey, { auth: { persistSession: false } });
     const id = crypto.randomUUID();
     const path = `${id}/cv${allowed.get(cv.type)}`;
-    const { error: uploadError } = await db.storage.from("semad-cvs").upload(path, cv, {
+    const { error: uploadError } = await db.storage.from("semad-cv").upload(path, cv, {
       contentType: cv.type, upsert: false,
     });
     if (uploadError) {
@@ -72,7 +72,7 @@ Deno.serve(async (req) => {
       id, name, email, phone, city, domain, motivation, job_title: jobTitle, cv_path: path, status: "reçue",
     });
     if (insertError) {
-      await db.storage.from("semad-cvs").remove([path]);
+      await db.storage.from("semad-cv").remove([path]);
       console.error("Database error", insertError);
       return json({ error: "Impossible d'enregistrer la candidature." }, 500);
     }
