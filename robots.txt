@@ -1,0 +1,6 @@
+# Instructions pour un futur domaine dédié à SEMAD SARL.
+# Sur GitHub Pages /semad-sarl/, ce fichier n'est pas le robots.txt racine du domaine github.io.
+User-agent: *
+Allow: /
+
+Sitemap: https://kazadie53-coder.github.io/semad-sarl/sitemap.xml
