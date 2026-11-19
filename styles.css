@@ -469,3 +469,21 @@ section[hidden],article[hidden]{display:none!important}
 .career-actions a{color:#17517e;font-weight:800;font-size:.85rem}
 .career-status{font-size:.87rem;font-weight:700;color:var(--navy);margin:12px 0 0}
 @media(max-width:650px){.career-form-grid{grid-template-columns:1fr}.career-vacancies{padding:16px}.career-actions{align-items:stretch;flex-direction:column}.career-actions button{width:100%}}
+
+/* Formulaires professionnels : fournisseurs, clients, partenaires */
+.relation-form-heading{margin:26px 0 16px;padding-top:22px;border-top:1px solid #d8e2ef}
+.relation-form-heading h4{font-size:1.35rem;color:var(--navy);margin:0 0 8px}
+.relation-form-heading p{font-size:.9rem;color:var(--muted);margin:0}
+.relation-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.relation-form-grid label{display:flex;flex-direction:column;gap:7px;font-weight:800;font-size:.84rem;color:var(--navy)}
+.relation-form-wide{grid-column:1/-1}
+.relation-form-grid :is(input,textarea){box-sizing:border-box;width:100%;min-width:0;padding:12px;border:1px solid #c7d4e4;border-radius:7px;background:#fff;color:#173251;font:inherit;font-weight:400}
+.relation-form-grid textarea{resize:vertical}
+.relation-form-grid :is(input,textarea):focus-visible{outline:3px solid #d6ab49;outline-offset:2px}
+.relation-form-consent{display:flex;gap:10px;align-items:flex-start;margin-top:18px;color:var(--navy);font-size:.84rem;line-height:1.5}
+.relation-form-consent input{width:18px;height:18px;flex:none;margin-top:3px}
+.relation-form-privacy{font-size:.78rem;color:var(--muted);margin:12px 0 20px}
+.relation-form-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.relation-form-actions button{cursor:pointer}
+.relation-form-actions a{font-size:.86rem;font-weight:800;color:#17517e}
+@media(max-width:650px){.relation-form-grid{grid-template-columns:1fr}.relation-form-actions{flex-direction:column;align-items:stretch}.relation-form-actions button{width:100%}}
