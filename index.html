@@ -43,6 +43,20 @@
       <div class="section-heading"><p class="eyebrow">Informations à la une</p><h2 id="home-highlights-title">Offres d’emploi et dernières actualités</h2><p>Consultez directement les nouvelles opportunités et les annonces de SEMAD SARL.</p></div>
       <div class="home-highlight-columns"><div><div class="home-highlight-heading"><h3>Offres d’emploi</h3><a href="recrutement.html">Toutes les offres →</a></div><div id="home-job-highlights" class="home-highlight-list" aria-live="polite"><p>Chargement des offres…</p></div></div><div><div class="home-highlight-heading"><h3>Actualités récentes</h3><a href="#actualites">Toutes les actualités →</a></div><div id="home-news-highlights" class="home-highlight-list" aria-live="polite"><p>Chargement des actualités…</p></div></div></div>
     </section>
+  <section class="section" id="semad-subscribe" aria-labelledby="subscribe-title" style="padding-top:34px;padding-bottom:34px">
+    <div style="max-width:850px;margin:auto;background:#eef5fb;border:1px solid #d6e5f0;border-radius:18px;padding:clamp(20px,4vw,36px)">
+      <p class="eyebrow">Restez informé</p><h2 id="subscribe-title">Recevez les offres d’emploi et les actualités</h2>
+      <p>Abonnez-vous gratuitement pour être averti des nouvelles publications de SEMAD SARL.</p>
+      <form id="semad-subscribe-form" style="display:grid;gap:12px;max-width:600px">
+        <label for="subscriber-email">Votre adresse e-mail</label><input id="subscriber-email" name="email" type="email" autocomplete="email" placeholder="exemple@domaine.com" required style="padding:13px;border-radius:9px;border:1px solid #9db6ce">
+        <label for="subscriber-topic">Publications souhaitées</label><select id="subscriber-topic" name="topic" style="padding:13px;border-radius:9px;border:1px solid #9db6ce"><option value="all">Offres d’emploi et actualités</option><option value="jobs">Offres d’emploi uniquement</option><option value="news">Actualités uniquement</option></select>
+        <label style="display:flex;align-items:flex-start;gap:10px"><input id="subscriber-consent" type="checkbox" required style="width:auto;margin-top:5px"><span>J’accepte de recevoir les notifications de SEMAD SARL et comprends que je pourrai me désabonner. <a href="politique-confidentialite.html">Confidentialité</a>.</span></label>
+        <button type="submit" class="button button-gold" id="subscriber-submit">M’abonner par e-mail</button>
+        <p id="subscriber-status" role="status" aria-live="polite"></p>
+      </form>
+      <div style="margin-top:18px;border-top:1px solid #d0deeb;padding-top:16px"><h3>Notifications sur votre téléphone ou navigateur</h3><p>Recevez une alerte lorsque de nouvelles annonces sont publiées, même sans consulter le site.</p><button type="button" class="button button-outline" id="subscriber-push" style="color:#102c54;border:1px solid #102c54">Activer les notifications</button><p id="subscriber-push-status" role="status" aria-live="polite"></p></div>
+    </div>
+  </section>
   <div class="hero semad-hero" aria-label="Présentation de SEMAD SARL"><div class="hero-visual" aria-hidden="true"><div class="hero-orbit hero-orbit-one"></div><div class="hero-orbit hero-orbit-two"></div><img src="logo-semad.png" alt=""></div>
     <div class="hero-content"><p class="eyebrow" id="slide-eyebrow">SEMAD SARL • Société multisectorielle à Kolwezi</p><h1 id="slide-title">SEMAD SARL : <span>des solutions et des opportunités pour demain.</span></h1><p class="hero-text" id="slide-description">Basée à Kolwezi, SEMAD SARL développe ses activités dans le commerce, l’agriculture et l’élevage, les services aux entreprises et la formation professionnelle. La sécurité et le gardiennage restent soumis aux autorisations requises.</p><div class="hero-actions"><a class="button button-gold" id="slide-primary" href="#services">Explorer nos domaines</a><a class="button button-outline" href="recrutement.html">Voir les offres d’emploi</a></div><div class="slide-controls" aria-label="Navigation du diaporama"><button type="button" id="slide-prev" aria-label="Diapositive précédente">‹</button><div id="slide-dots" class="slide-dots" aria-label="Choisir parmi sept diapositives"></div><button type="button" id="slide-next" aria-label="Diapositive suivante">›</button></div><p class="tagline">Confiance • Excellence • Développement</p></div>
     <figure class="hero-photo-ring"><img id="slide-photo" src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1100&q=88" alt="Illustration des activités et projets de SEMAD SARL" fetchpriority="high"></figure></div>
@@ -87,4 +101,5 @@
 <script src="news.js?v=20261118-20"></script>
 <script src="jobs.js?v=20261119-3"></script>
 <script src="home-highlights.js?v=20261120-2" defer></script>
+<script src="subscriptions.js?v=20261120-1" defer></script>
 </body></html>
