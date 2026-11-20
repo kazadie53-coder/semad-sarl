@@ -25,9 +25,9 @@
     const button=document.getElementById('subscriber-submit');
     button.disabled=true;status.textContent='Enregistrement de votre demande…';
     try{
-      const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'email',email:document.getElementById('subscriber-email').value.trim(),topic:document.getElementById('subscriber-topic').value,consent:document.getElementById('subscriber-consent').checked})});
+      const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:document.getElementById('subscriber-email').value.trim(),preference:document.getElementById('subscriber-topic').value,consent:document.getElementById('subscriber-consent').checked})});
       if(!response.ok)throw Error('Erreur '+response.status);
-      status.textContent='Demande reçue. Vérifiez votre boîte e-mail pour confirmer votre abonnement.';
+      status.textContent='Votre adresse e-mail a été enregistrée.';
       form.reset();
     }catch{status.textContent="L'abonnement n'a pas pu être enregistré. Veuillez réessayer plus tard."}
     finally{button.disabled=false}
