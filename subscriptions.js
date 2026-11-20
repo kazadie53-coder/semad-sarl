@@ -26,10 +26,15 @@
     button.disabled=true;status.textContent='Enregistrement de votre demande…';
     try{
       const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:document.getElementById('subscriber-email').value.trim(),preference:document.getElementById('subscriber-topic').value,consent:document.getElementById('subscriber-consent').checked})});
-      if(!response.ok)throw Error('Erreur '+response.status);
+      if(!response.ok){
+        const detail=await response.json().catch(()=>({}));
+        throw Error(detail.error || detail.message || ('Erreur '+response.status));
+      }
       status.textContent='Votre adresse e-mail a été enregistrée.';
       form.reset();
-    }catch{status.textContent="L'abonnement n'a pas pu être enregistré. Veuillez réessayer plus tard."}
+    }catch(error){
+      status.textContent='Inscription refusée : '+(error?.message||'erreur inconnue')+'.';
+    }
     finally{button.disabled=false}
   });
   pushButton.addEventListener('click',async()=>{
