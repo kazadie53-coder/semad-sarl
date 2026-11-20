@@ -503,3 +503,18 @@ section[hidden],article[hidden]{display:none!important}
  .career-form-grid .international-phone select{font-size:16px}
  .form-process-note{font-size:.85rem}
 }
+
+/* Accueil : annonces et recrutement à la une */
+.home-highlights{padding-top:42px;padding-bottom:42px}
+.home-highlight-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:24px}
+.home-highlight-columns>div{min-width:0;background:#f6f9fc;border:1px solid #dbe5ee;border-radius:16px;padding:22px}
+.home-highlight-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.home-highlight-heading h3{margin:0;color:#102c54}
+.home-highlight-heading a{font-weight:700;color:#155c9c}
+.home-highlight-list{display:grid;gap:12px}
+.home-highlight-item{background:white;border:1px solid #dce5ee;border-radius:12px;padding:16px;overflow-wrap:anywhere}
+.home-highlight-item h4{margin:6px 0 8px;color:#102c54;font-size:1.1rem}
+.home-highlight-item p{margin:6px 0;color:#3b5369}
+.home-highlight-item .home-highlight-meta{font-size:.87rem;color:#536b7f}
+.home-highlight-item .home-highlight-link{display:inline-block;margin-top:12px;font-weight:700;color:#155c9c}
+@media(max-width:700px){.home-highlight-columns{grid-template-columns:1fr}.home-highlight-columns>div{padding:16px}}
