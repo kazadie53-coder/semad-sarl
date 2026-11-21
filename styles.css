@@ -518,3 +518,6 @@ section[hidden],article[hidden]{display:none!important}
 .home-highlight-item .home-highlight-meta{font-size:.87rem;color:#536b7f}
 .home-highlight-item .home-highlight-link{display:inline-block;margin-top:12px;font-weight:700;color:#155c9c}
 @media(max-width:700px){.home-highlight-columns{grid-template-columns:1fr}.home-highlight-columns>div{padding:16px}}
+
+/* Améliorations ciblées de l’accueil : navigation et accessibilité */
+.skip-to-content{position:fixed;left:16px;top:-100px;z-index:9999;padding:12px 18px;background:#fff;color:#102c54;border:2px solid #d6ad4c;border-radius:8px;font-weight:700}.skip-to-content:focus{top:12px}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #d6ad4c;outline-offset:3px}.hero-secondary-link{margin:14px 0 0;font-size:.95rem}.hero-secondary-link a{color:#fff;text-decoration:underline;text-underline-offset:4px}.hero-secondary-link a:hover{color:#f3e6bf}#accueil,#apropos,#services,#valeurs,#actualites,#devis,#carrieres{scroll-margin-top:100px}@media(max-width:600px){.hero-actions .button{min-height:48px}.hero-secondary-link{margin-top:18px}}
