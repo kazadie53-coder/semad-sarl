@@ -13,3 +13,9 @@ Note : ne pas utiliser les anciens jetons GitHub ; ce portail ne les demande pas
 - Pour les vidéos, coller une URL YouTube. Les vidéos sont intégrées à la rubrique Actualités via youtube-nocookie.com.
 - Les médias publiés sont publics. Ne pas téléverser de fichiers confidentiels.
 - L'accès administrateur dépend de la connexion Supabase et de l'appartenance à semad_admins.
+
+## Vidéos MP4 directement depuis l'ordinateur
+- Dans Supabase SQL Editor, exécuter **uniquement la section « Extension vidéo locale MP4 »** à la fin de admin/schema.sql (ne pas réexécuter toutes les anciennes politiques).
+- Le formulaire Actualités accepte un fichier MP4 de 50 Mo maximum et l'envoie dans le bucket public semad-videos.
+- La vidéo est lue dans les actualités avec un lecteur HTML5 (sans YouTube). Le projet Supabase doit autoriser les fichiers de cette taille dans ses limites globales.
+- Ne pas téléverser de vidéos privées ou sans autorisation de diffusion. Les fichiers restent publics, même si l'actualité est supprimée ; leur suppression du stockage doit être faite séparément.
