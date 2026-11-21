@@ -99,10 +99,12 @@ document.getElementById('quote-form').addEventListener('submit', async event => 
 // Fenêtres de présentation des services
 const serviceDetails = [{"title":"Commerce","intro":"SEMAD SARL intervient dans le domaine du commerce général, de l’approvisionnement et de la distribution de biens, selon les besoins exprimés.","heading1":"Nos domaines d’intervention","body1":"Approvisionnement en produits et fournitures ; commerce général ; recherche de solutions de distribution et de fourniture adaptées aux commandes et aux marchés.","heading2":"Notre approche","body2":"Écouter la demande, préciser les caractéristiques et quantités recherchées, étudier la disponibilité et proposer une offre adaptée."},{"title":"Agriculture & élevage","intro":"Nous développons des projets de production agricole et d’élevage afin de contribuer à l’approvisionnement local et à la création d’opportunités.","heading1":"Projets envisagés","body1":"Culture du maïs et autres activités agricoles selon les ressources disponibles ; aviculture, notamment l’élevage de poules pondeuses et la production d’œufs.","heading2":"Notre approche","body2":"Étudier les besoins en terrain, équipements, intrants, alimentation animale et suivi technique avant le lancement de chaque projet."},{"title":"Services aux entreprises","intro":"SEMAD SARL propose un cadre de collaboration et d’accompagnement adapté aux besoins des entreprises et des organisations.","heading1":"Domaines d’intervention","body1":"Identification des besoins, coordination de prestations et appui opérationnel dans le cadre des activités et capacités autorisées de la société.","heading2":"Notre approche","body2":"Analyser chaque demande, définir le périmètre de la prestation et établir une proposition claire, adaptée aux moyens disponibles."},{"title":"Formation professionnelle","intro":"Nous souhaitons contribuer au développement des compétences par des initiatives de formation pratique et de perfectionnement.","heading1":"Domaines de formation","body1":"Initiation et perfectionnement en informatique ; formation en coupe et couture ; ateliers pratiques selon les besoins identifiés et les ressources disponibles.","heading2":"Notre approche","body2":"Organiser des programmes progressifs, axés sur la pratique et l’acquisition de compétences utiles à l’insertion professionnelle et à l’entrepreneuriat."},{"title":"Sécurité & gardiennage","intro":"SEMAD SARL inscrit la sécurité privée et le gardiennage parmi ses domaines d’activité, dans le respect des autorisations réglementaires applicables.","heading1":"Domaines de prestations","body1":"Surveillance et gardiennage de sites industriels, commerces, résidences et entrepôts ; contrôle des accès et organisation de rondes selon les contrats et la réglementation.","heading2":"Condition préalable","body2":"Ces prestations ne seront proposées ni exécutées avant l’obtention des autorisations et agréments légalement nécessaires."}];
 const serviceDialog = document.getElementById('service-dialog');
+let lastServiceTrigger = null;
 const serviceDialogTitle = document.getElementById('service-dialog-title');
 const serviceDialogContent = document.getElementById('service-dialog-content');
 document.querySelectorAll('.service-open').forEach(button => button.addEventListener('click', () => {
   const item = serviceDetails[Number(button.dataset.service)];
+  lastServiceTrigger = button;
   if (!item) return;
   serviceDialogTitle.textContent = item.title;
   serviceDialogContent.replaceChildren();
@@ -117,6 +119,7 @@ document.querySelectorAll('.service-open').forEach(button => button.addEventList
   serviceDialog.showModal();
 }));
 document.querySelector('.service-close').addEventListener('click', () => serviceDialog.close());
+serviceDialog.addEventListener('close', () => { if (lastServiceTrigger) lastServiceTrigger.focus(); });
 serviceDialog.addEventListener('click', event => { if (event.target === serviceDialog) serviceDialog.close(); });
 document.getElementById('service-dialog-contact').addEventListener('click', () => {
   const select = document.getElementById('service');
