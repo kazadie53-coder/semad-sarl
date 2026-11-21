@@ -10,7 +10,7 @@
       if (!response.ok) throw new Error('Configuration indisponible');
       const config = await response.json();
       if (!config.url || !config.publishableKey || config.publishableKey.includes('REMPLACER')) throw new Error('Configuration incomplète');
-      const result = await fetch(config.url + '/rest/v1/semad_posts?select=title,date,summary,content&order=date.desc', {
+      const result = await fetch(config.url + '/rest/v1/semad_posts?select=title,date,summary,content,image,video_url&order=date.desc', {
         headers: {apikey:config.publishableKey}, cache:'no-store'
       });
       if (!result.ok) throw new Error('Actualités distantes indisponibles');
