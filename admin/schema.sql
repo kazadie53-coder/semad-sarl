@@ -30,3 +30,13 @@ on conflict (id) do nothing;
 create policy "Lecture publique médias SEMAD" on storage.objects for select to public using (bucket_id='semad-media');
 create policy "Ajout médias par administrateurs SEMAD" on storage.objects for insert to authenticated
 with check (bucket_id='semad-media' and exists(select 1 from public.semad_admins where user_id=(select auth.uid())));
+
+-- Extension vidéo locale MP4 : exécuter séparément sur le projet déjà configuré.
+insert into storage.buckets(id,name,public,file_size_limit,allowed_mime_types)
+values ('semad-videos','semad-videos',true,52428800,array['video/mp4'])
+on conflict(id) do update set public=excluded.public,file_size_limit=excluded.file_size_limit,allowed_mime_types=excluded.allowed_mime_types;
+drop policy if exists "Lecture publique videos SEMAD" on storage.objects;
+create policy "Lecture publique videos SEMAD" on storage.objects for select to public using(bucket_id='semad-videos');
+drop policy if exists "Ajout videos par administrateurs SEMAD" on storage.objects;
+create policy "Ajout videos par administrateurs SEMAD" on storage.objects for insert to authenticated
+with check(bucket_id='semad-videos' and exists(select 1 from public.semad_admins where user_id=(select auth.uid())));
