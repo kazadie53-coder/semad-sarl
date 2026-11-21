@@ -20,3 +20,13 @@ create policy "Admins can update posts" on public.semad_posts for update to auth
 create policy "Admins can delete posts" on public.semad_posts for delete to authenticated using (exists (select 1 from public.semad_admins where user_id=(select auth.uid())));
 -- Après avoir créé l'utilisateur administrateur dans Authentication > Users :
 -- insert into public.semad_admins(user_id) values ('UUID_DE_L_UTILISATEUR');
+
+-- Extension multimédia : exécuter cette partie sur le projet Supabase existant.
+alter table public.semad_posts add column if not exists image text;
+alter table public.semad_posts add column if not exists video_url text;
+insert into storage.buckets (id,name,public,file_size_limit,allowed_mime_types)
+values ('semad-media','semad-media',true,5242880,array['image/jpeg','image/png','image/webp'])
+on conflict (id) do nothing;
+create policy "Lecture publique médias SEMAD" on storage.objects for select to public using (bucket_id='semad-media');
+create policy "Ajout médias par administrateurs SEMAD" on storage.objects for insert to authenticated
+with check (bucket_id='semad-media' and exists(select 1 from public.semad_admins where user_id=(select auth.uid())));
