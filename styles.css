@@ -521,3 +521,26 @@ section[hidden],article[hidden]{display:none!important}
 
 /* Améliorations ciblées de l’accueil : navigation et accessibilité */
 .skip-to-content{position:fixed;left:16px;top:-100px;z-index:9999;padding:12px 18px;background:#fff;color:#102c54;border:2px solid #d6ad4c;border-radius:8px;font-weight:700}.skip-to-content:focus{top:12px}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #d6ad4c;outline-offset:3px}.hero-secondary-link{margin:14px 0 0;font-size:.95rem}.hero-secondary-link a{color:#fff;text-decoration:underline;text-underline-offset:4px}.hero-secondary-link a:hover{color:#f3e6bf}#accueil,#apropos,#services,#valeurs,#actualites,#devis,#carrieres{scroll-margin-top:100px}@media(max-width:600px){.hero-actions .button{min-height:48px}.hero-secondary-link{margin-top:18px}}
+
+/* Ajustements responsive : navigation, cartes et formulaires */
+@media(max-width:700px){
+ html,body{max-width:100%;overflow-x:clip}
+ .site-header{padding-inline:14px;min-height:72px;height:auto;gap:8px}
+ .brand{flex:1 1 auto;min-width:0;gap:8px}
+ .brand img{width:46px;height:46px;flex:none}
+ .brand span{min-width:0}
+ .brand strong{font-size:.94rem}
+ .brand small{font-size:.63rem;line-height:1.25;overflow-wrap:anywhere}
+ .menu-toggle{min-width:44px;min-height:44px;flex:none}
+ .section{padding-left:18px;padding-right:18px}
+ .hero-actions{align-items:stretch}
+ .hero-actions .button{max-width:100%;text-align:center}
+ .home-domain-grid,.service-grid,.home-project-grid{min-width:0}
+ .service-card,.home-domain,.home-highlight-item{min-width:0;overflow-wrap:anywhere}
+ .relation-form-grid label,.career-form-grid label{min-width:0}
+ .relation-form-grid :is(input,select,textarea),.career-form-grid :is(input,select,textarea),.quote-form :is(input,select,textarea){max-width:100%;font-size:16px}
+ .relation-form-actions button,.career-actions button,.quote-form button{min-height:48px}
+ .service-dialog{max-width:calc(100vw - 24px);max-height:calc(100dvh - 24px);overflow-y:auto}
+}
+@media(max-width:380px){.brand small{font-size:.58rem}.section{padding-left:14px;padding-right:14px}.hero-actions .button{width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.service-card,.relations-overview>a{transition:none}}
