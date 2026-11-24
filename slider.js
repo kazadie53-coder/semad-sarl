@@ -9,6 +9,10 @@
     ["Agriculture • Culture du maïs","Cultiver la terre, <span>préparer l'avenir.</span>","Des projets de culture du maïs pour contribuer à la production alimentaire locale.","Découvrir nos projets","#services"],
     ["Commerce • Équipements de protection","Des équipements adaptés <span>aux exigences du terrain.</span>","Commerce envisagé d'EPI : casques, gilets, chaussures de sécurité et accessoires.","Découvrir le commerce","#services"],
     ["Sécurité & gardiennage • Département sécurité","Protéger les personnes, <span>les biens et les installations.</span>","Découvrez notre projet de département Sécurité & Gardiennage : surveillance, contrôle des accès et prévention des risques, sous réserve des autorisations requises.","Découvrir la sécurité","#services"]
+,
+    ["Télécommunications • Infrastructures techniques","Connecter les infrastructures, <span>préparer demain.</span>","Maintenance et accompagnement technique des infrastructures de télécommunications.","Découvrir les télécommunications","#services"],
+    ["Transport • Biens et personnes","Faciliter la mobilité, <span>rapprocher les opportunités.</span>","Développement de solutions de transport routier de marchandises et de personnes.","Découvrir le transport","#services"],
+    ["Carburants • Produits pétroliers","Accompagner la mobilité <span>et les activités économiques.</span>","Développement de projets de vente et de distribution de carburants et produits pétroliers.","Découvrir les produits pétroliers","#services"]
   ];
   // Photographies illustratives par activité, affichées en fond et dans le cercle.
   const photos = [
@@ -18,7 +22,10 @@
     "media/poules-pondeuses.jpg",
     "media/champ-mais.jpg",
     "https://images.unsplash.com/photo-1662309376159-b95fb193d96b?auto=format&fit=crop&w=1600&q=88",
-    "media/securite-gardiennage.jpg"
+    "media/securite-gardiennage.jpg",
+    "media/telecommunications.jpg",
+    "media/transport.jpg",
+    "media/produits-petroliers.jpg"
   ];  function init() {
     const hero=document.querySelector('.semad-hero');
     const dots=document.getElementById('slide-dots');
