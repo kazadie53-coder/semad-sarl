@@ -137,7 +137,7 @@ document.querySelectorAll('[data-contact-service]').forEach(link => link.addEven
   if ([...select.options].some(option => option.value === label)) select.value = label;
 }));
 // Affichage indépendant de chaque rubrique (navigation par vues)
-const pageViews = ['accueil','apropos','services','valeurs','actualites','carrieres','devis'];
+const pageViews = ['accueil','apropos','services','valeurs','actualites','carrieres','devis','faq','galerie'];
 const relationViews = ['emplois','fournisseurs','clients','partenaires','investissement','suivi'];
 const viewSections = pageViews.map(id => document.getElementById(id));
 const relationCards = relationViews.map(id => document.getElementById(id));
@@ -147,13 +147,13 @@ function showView() {
   const requested = decodeURIComponent(location.hash.slice(1));
   const current = [...pageViews,...relationViews].includes(requested) ? requested : 'accueil';
   const isRelation = relationViews.includes(current);
-  viewSections.forEach(section => { section.hidden = section.id !== (isRelation ? 'carrieres' : current); });
+  viewSections.forEach(section => { section && (section.hidden = section.id !== (isRelation ? 'carrieres' : current)); });
   relationCards.forEach(card => { card.hidden = !isRelation || card.id !== current; });
   if (relationsOverview) relationsOverview.hidden = current !== 'carrieres';
   if (relationsHeading) relationsHeading.hidden = isRelation;
   document.title = (current === 'accueil' ? 'Bienvenue' : ({
     apropos:'À propos',services:'Nos services',valeurs:'Nos valeurs',actualites:'Actualités',
-    devis:'Contact & devis',emplois:'Emplois & recrutement',fournisseurs:'Fournisseurs',
+    faq:'Questions fréquentes',galerie:'Galerie multimédia',devis:'Contact & devis',emplois:'Emplois & recrutement',fournisseurs:'Fournisseurs',
     clients:'Clients',partenaires:'Partenaires',investissement:'Investissement',suivi:'Suivi des demandes',carrieres:'Carrières & relations'
   }[current] || 'SEMAD SARL')) + ' | SEMAD SARL';
   document.querySelectorAll('.nav-dropdown a, .navigation > .nav-cta').forEach(link => { const active=link.getAttribute('href')==='#'+current; if(active) link.setAttribute('aria-current','page'); else link.removeAttribute('aria-current'); });
